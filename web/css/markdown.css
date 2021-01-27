@@ -1,0 +1,68 @@
+a{
+			text-decoration: none !important;
+		}
+		/*具体内容部分的样式*/
+		 .main-content{   
+            width: 70%;
+			padding:20px;
+			font-size:16px;
+            margin:20px 15%;
+            border-radius: 4px;
+		}
+
+        /*以下为自己实现的类似于markdown解析的过程，也即我们利用java编译代码时只需要把解析出来的代码加上对应属性即可实现对应布局，我们的markdown格式的内容必须放在main-content这个容器里面,注意：对于我们写的markdown代码有一个要求，也即需要一段一段的写，每一段之后，都应该写一个空格，从而让我们更好的解析*/
+
+         /*class为.left-green-title这个的布局都是左侧有一个宽5px的碧绿色边框的标题布置,且字体颜色设置为亮灰色,也即符合 >+内容 规则就被解析为这样，其左端不能有字符串，只能是>开头，才解析为p标签，以下class，内容为>后内容的一个标签*/
+         .left-green-title{
+            line-height: 35px;
+            border-left: 5px solid  #14F840; 
+            padding-left:6px;
+            color: #9C9E9C;
+        }
+        /*class为.back-yellow-content的这种标签其背景色都被设置为黄色，以突出显示，解析== ==格式包围字符串的markdown格式为这种布局，其两边也可以有字符串，也即符合(字符== 内容 == 字符)的内容部分，将会解析为在其两侧将会添加一个span标签，class为以下class，内容为内容的标签 */
+         .back-yellow-content{
+            background-color: #FFFF00;
+        }
+        /*class为.back-green-radius-content的这种标签其背景色都被设置为碧绿色，同时还带圆角，以突出显示，解析``包围的为这样布局，也即在markdown中符合(字符`内容`字符)的内容部分最终会被解析为class为以下内容的span标签*/
+          .back-green-radius-content{
+            background-color:#14F840;
+            border-radius: 5px;
+        }
+        /*class为.font-bold的这种标签其字体显示进行加粗，对应markdown的** **进行包围的文本解析出来的class，也即在markdown中符合(字符**内容**字符)格式的字符串中，内容部分将会被一个class为以下class的span标签所包含*/
+        .font-bold{
+            font-weight: bold;
+        }
+        /*class为left-raw的这种标签其布局格式，这个class下的标签为模拟代码块中行号的布局，利用java解析markdown生成时需要注意此class所在只能是div标签*/
+        /*以下的两个布局为对应着代码块的布局，其对应着markdown对于符合``` ```解析后字符串的布局，也即将其布局为代码块*/
+         .left-raw{
+            display: inline-block;
+            width:fit-content;
+            width:-webkit-fit-content;
+            width:-moz-fit-content;
+            margin-left:2px;
+            padding-right: 5px;
+            border-right: 2px solid lightgray;
+            margin-right: 2px;
+            float: left;
+            color: #14F840;
+            margin-top:0;
+        }
+        /*class为code-content的这种标签其布局格式，这个class下的标签为对于代码块所在的布局，利用java解析markdown生成时需要注意此class所在只能是div标签*/
+         .code-content{
+            display: inline-block;
+            margin-left:5px;
+            padding-left:3px;
+            margin-top:0;
+        }
+        /*class我img-content的标签布局如下，对应着markdown中的图片布局*/
+         .img-content{
+            margin:0 auto;
+            display: block;
+        }
+        pre{
+            display: block;
+            background-color: #F5F5F5;
+            border: 2px solid #CCCCCC;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
